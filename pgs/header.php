@@ -253,9 +253,9 @@ body {
 
 .navbar-menu a.ativo {
 
-    background-color: <?= $cores["claro"]["ativo"] ?>;
+    background-color: <?= $cores["claro"]["btnav_ativo"] ?>;
     color: <?= $cores["claro"]["texto"] ?>;
-    
+
     color: #222;
 
     font-weight: bold;
