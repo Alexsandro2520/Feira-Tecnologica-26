@@ -1,15 +1,18 @@
 <?php
 
-//Pegando o home do site
+// Pegando o conteúdo da página inicial
 $home = file_get_contents("html/home.html");
 
-
+// Navbar
 include "pgs/header.php";
 
-//O código do site
+// CSS
+include "style.php";
+
+//Pegando a página de agora
 $codigo = $home;
 
-//Mostrando o que precisa ser mostrado
-echo $codigo;
+// Conteúdo
+echo $home;
 
 ?>
