@@ -168,10 +168,12 @@ body {
 
 .navbar-logo img {
 
-    width: 125px;
+    width: 105px;
     height: auto;
 
-    border-radius: 8px;
+    padding: 8px;
+
+    border-radius: 10px;
 }
 
 
