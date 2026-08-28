@@ -1,18 +1,66 @@
 <?php
 
-// Pegando o conteúdo da página inicial
-$home = file_get_contents("html/home.html");
+// ==========================================
+// IDENTIFICANDO A PÁGINA
+// ==========================================
 
-// Navbar
+$pagina = $_GET['pagina'] ?? 'home';
+
+
+// ==========================================
+// DEFININDO O ARQUIVO
+// ==========================================
+
+switch ($pagina) {
+
+    case 'historia':
+        $arquivo = "html/historia.html";
+        break;
+
+    case 'noticias':
+        $arquivo = "html/noticias.html";
+        break;
+
+    case 'eventos':
+        $arquivo = "html/eventos.html";
+        break;
+
+    case 'turismo':
+        $arquivo = "html/turismo.html";
+        break;
+
+    case 'home':
+    default:
+        $arquivo = "html/home.html";
+        break;
+}
+
+
+// ==========================================
+// PEGANDO O CONTEÚDO
+// ==========================================
+
+$codigo = file_get_contents($arquivo);
+
+
+// ==========================================
+// NAVBAR
+// ==========================================
+
 include "pgs/header.php";
 
-// CSS
+
+// ==========================================
+// STYLE
+// ==========================================
+
 include "style.php";
 
-//Pegando a página de agora
-$codigo = $home;
 
-// Conteúdo
-echo $home;
+// ==========================================
+// MOSTRANDO A PÁGINA
+// ==========================================
+
+echo $codigo;
 
 ?>

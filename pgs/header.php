@@ -74,9 +74,9 @@ $corAtiva = "#FFD700";
                 Turismo
             </a>
 
-            <a
-                href="historia.php"
-                class="<?= $paginaAtual == 'historia.php' ? 'ativo' : '' ?>"
+            <a 
+                href="index.php?pagina=historia"
+                class="<?= isset($_GET['pagina']) && $_GET['pagina'] == 'historia' ? 'ativo' : '' ?>"
             >
                 História
             </a>
