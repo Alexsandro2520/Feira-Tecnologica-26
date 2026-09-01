@@ -19,6 +19,8 @@ include "config.php";
 
     --botao: <?= $cores["claro"]["botao"] ?>;
     --botao-hover: <?= $cores["claro"]["botao_hover"] ?>;
+
+    --cartao-turismo: <?= $cores["claro"]["cartao_turismo"] ?>;
 }
 
 
@@ -37,6 +39,8 @@ body.tema-noturno {
 
     --botao: <?= $cores["noturno"]["botao"] ?>;
     --botao-hover: <?= $cores["noturno"]["botao_hover"] ?>;
+
+    --cartao-turismo: <?= $cores["noturno"]["cartao_turismo"] ?>;
 }
 
 
@@ -301,6 +305,157 @@ body {
 .btn-card:hover {
     background-color: var(--botao-hover);
 }
+
+/* =========================
+TURISMO
+========================= */
+
+.turismo {
+width: 100%;
+padding: 60px 5%;
+box-sizing: border-box;
+}
+
+.turismo-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px;
+    box-sizing: border-box;
+
+    background-color: var(--branco);
+    border-radius: 35px;
+}
+
+.turismo-container h1 {
+margin: 0;
+text-align: center;
+font-size: 36px;
+color: var(--texto);
+}
+
+.turismo-introducao {
+max-width: 700px;
+margin: 15px auto 40px;
+text-align: center;
+
+
+color: var(--texto_secundario);
+font-size: 18px;
+
+
+}
+
+.turismo-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+
+    background-color: var(--cartao-turismo);
+    padding: 35px;
+    border-radius: 30px;
+}
+
+
+
+.turismo-card {
+overflow: hidden;
+
+
+background-color: var(--branco);
+border-radius: 25px;
+
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
+
+transition: transform 0.2s ease;
+
+
+}
+
+
+.turismo-card:hover {
+transform: translateY(-5px);
+}
+
+.turismo-card-imagem {
+width: 100%;
+height: 220px;
+overflow: hidden;
+}
+
+.turismo-card-imagem img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.turismo-card-conteudo {
+padding: 25px;
+}
+
+.turismo-card-conteudo h2 {
+    margin: 0 0 10px;
+    color: var(--texto);
+    font-size: 25px;
+}
+
+.turismo-card-conteudo p {
+margin: 0 0 20px;
+
+
+color: var(--texto_secundario);
+line-height: 1.6;
+
+
+}
+
+.turismo-card-conteudo button {
+padding: 10px 20px;
+
+
+border: none;
+border-radius: 10px;
+
+background-color: var(--botao);
+color: var(--fundo);
+
+font-weight: bold;
+cursor: pointer;
+
+transition: 0.2s;
+
+
+}
+
+.turismo-card-conteudo button:hover {
+background-color: var(--botao_hover);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+
+```
+.turismo {
+    padding: 30px 4%;
+}
+
+.turismo-container {
+    padding: 25px;
+    border-radius: 25px;
+}
+
+.turismo-container h1 {
+    font-size: 28px;
+}
+
+.turismo-cards {
+    grid-template-columns: 1fr;
+}
+
+
+}
+
 
 
 /* ========================================

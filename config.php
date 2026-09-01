@@ -14,6 +14,7 @@ $cores = [
         "botao" => "#222222",
         "botao_hover" => "#555555",
         "btnav_ativo" => "#FFD700",
+        "cartao_turismo" => "#F0F0F0",
     ],
 
     "noturno" => [
@@ -28,6 +29,7 @@ $cores = [
         "botao" => "#FFFFFF",
         "botao_hover" => "#DDDDDD",
         "btnav_ativo" => "#000000",
+        "cartao_turismo" => "#F0F0F0",
 
     ]
 

@@ -4,11 +4,15 @@
 // CONFIGURAÇÕES
 // ==========================================
 
-// Página atual
-$paginaAtual = basename($_SERVER['PHP_SELF']);
+include "config.php";
 
-// Cor da opção ativa
-$corAtiva = "#FFD700";
+
+// ==========================================
+// PÁGINA ATUAL
+// ==========================================
+
+// Se não existir ?pagina=..., considera a página inicial
+$paginaAtual = $_GET['pagina'] ?? 'home';
 
 ?>
 
@@ -46,37 +50,41 @@ $corAtiva = "#FFD700";
 
         <div class="navbar-menu">
 
-            <a
+            <a 
                 href="index.php"
-                class="<?= $paginaAtual == 'index.php' ? 'ativo' : '' ?>"
+                class="<?= $paginaAtual == 'home' ? 'ativo' : '' ?>"
             >
                 Início
             </a>
 
-            <a
-                href="noticias.php"
-                class="<?= $paginaAtual == 'noticias.php' ? 'ativo' : '' ?>"
+
+            <a 
+                href="index.php?pagina=noticias"
+                class="<?= $paginaAtual == 'noticias' ? 'ativo' : '' ?>"
             >
                 Notícias
             </a>
 
-            <a
-                href="eventos.php"
-                class="<?= $paginaAtual == 'eventos.php' ? 'ativo' : '' ?>"
+
+            <a 
+                href="index.php?pagina=eventos"
+                class="<?= $paginaAtual == 'eventos' ? 'ativo' : '' ?>"
             >
                 Eventos
             </a>
 
-            <a
-                href="turismo.php"
-                class="<?= $paginaAtual == 'turismo.php' ? 'ativo' : '' ?>"
+
+            <a 
+                href="index.php?pagina=turismo"
+                class="<?= $paginaAtual == 'turismo' ? 'ativo' : '' ?>"
             >
                 Turismo
             </a>
 
+
             <a 
                 href="index.php?pagina=historia"
-                class="<?= isset($_GET['pagina']) && $_GET['pagina'] == 'historia' ? 'ativo' : '' ?>"
+                class="<?= $paginaAtual == 'historia' ? 'ativo' : '' ?>"
             >
                 História
             </a>
