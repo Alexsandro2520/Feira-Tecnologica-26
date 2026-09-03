@@ -307,152 +307,162 @@ body {
 }
 
 /* =========================
-TURISMO
-========================= */
+   TURISMO
+   ========================= */
 
 .turismo {
-width: 100%;
-padding: 60px 5%;
-box-sizing: border-box;
+    width: 100%;
+    padding: 60px 5%;
+    box-sizing: border-box;
 }
+
+/* TÍTULO FORA DO QUADRADO */
+
+.turismo > h1 {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+
+    text-align: center;
+
+    color: var(--texto);
+    font-size: 36px;
+}
+
+
+/* QUADRADO ENVOLVENDO OS CARDS */
 
 .turismo-container {
     width: 100%;
     max-width: 1200px;
+
     margin: 0 auto;
-    padding: 45px;
+    padding: 35px;
+
+    background-color: var(--cartao-turismo);
+
+    border-radius: 30px;
+
     box-sizing: border-box;
-
-    background-color: var(--branco);
-    border-radius: 35px;
 }
 
-.turismo-container h1 {
-margin: 0;
-text-align: center;
-font-size: 36px;
-color: var(--texto);
-}
 
-.turismo-introducao {
-max-width: 700px;
-margin: 15px auto 40px;
-text-align: center;
-
-
-color: var(--texto_secundario);
-font-size: 18px;
-
-
-}
+/* CARDS DENTRO DO QUADRADO */
 
 .turismo-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
 
-    background-color: var(--cartao-turismo);
-    padding: 35px;
-    border-radius: 30px;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
 }
 
 
+/* CARD INDIVIDUAL */
 
 .turismo-card {
-overflow: hidden;
+    overflow: hidden;
 
+    background-color: var(--branco);
 
-background-color: var(--branco);
-border-radius: 25px;
+    border-radius: 25px;
 
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
 
-transition: transform 0.2s ease;
-
-
+    transition: transform 0.2s ease;
 }
-
 
 .turismo-card:hover {
-transform: translateY(-5px);
+    transform: translateY(-5px);
 }
+
+
+/* IMAGEM */
 
 .turismo-card-imagem {
-width: 100%;
-height: 220px;
-overflow: hidden;
+    width: 100%;
+    height: 220px;
+
+    overflow: hidden;
 }
+
 
 .turismo-card-imagem img {
-width: 100%;
-height: 100%;
-object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
 }
 
+
+/* CONTEÚDO */
+
 .turismo-card-conteudo {
-padding: 25px;
+    padding: 25px;
 }
+
 
 .turismo-card-conteudo h2 {
     margin: 0 0 10px;
+
     color: var(--texto);
+
     font-size: 25px;
 }
 
+
 .turismo-card-conteudo p {
-margin: 0 0 20px;
+    margin: 0 0 20px;
 
+    color: var(--texto-secundario);
 
-color: var(--texto_secundario);
-line-height: 1.6;
-
-
+    line-height: 1.6;
 }
+
+
+/* BOTÃO */
 
 .turismo-card-conteudo button {
-padding: 10px 20px;
+    padding: 10px 20px;
 
+    border: none;
+    border-radius: 10px;
 
-border: none;
-border-radius: 10px;
+    background-color: var(--botao);
+    color: var(--branco);
 
-background-color: var(--botao);
-color: var(--fundo);
+    font-weight: bold;
 
-font-weight: bold;
-cursor: pointer;
+    cursor: pointer;
 
-transition: 0.2s;
-
-
+    transition: 0.2s;
 }
+
 
 .turismo-card-conteudo button:hover {
-background-color: var(--botao_hover);
+    background-color: var(--botao-hover);
+    color: var(--texto);
 }
+
 
 /* RESPONSIVIDADE */
 
 @media (max-width: 768px) {
 
-```
-.turismo {
-    padding: 30px 4%;
-}
+    .turismo {
+        padding: 30px 4%;
+    }
 
-.turismo-container {
-    padding: 25px;
-    border-radius: 25px;
-}
+    .turismo > h1 {
+        font-size: 28px;
+    }
 
-.turismo-container h1 {
-    font-size: 28px;
-}
+    .turismo-cards {
+        grid-template-columns: 1fr;
 
-.turismo-cards {
-    grid-template-columns: 1fr;
-}
-
+        padding: 25px;
+    }
 
 }
 

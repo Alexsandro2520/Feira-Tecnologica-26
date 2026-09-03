@@ -29,7 +29,7 @@ $cores = [
         "botao" => "#FFFFFF",
         "botao_hover" => "#DDDDDD",
         "btnav_ativo" => "#000000",
-        "cartao_turismo" => "#F0F0F0",
+        "cartao_turismo" => "#2B2B2B",
 
     ]
 
