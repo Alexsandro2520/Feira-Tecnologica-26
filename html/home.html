@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ribeirão Pires</title>
+</head>
+
+<body>
+
+    <section class="hero">
+        <img
+            class="hero-image"
+            src="imgs/home.png"
+            alt="Imagem de Ribeirão Pires"
+        >
+    </section>
+
+    <section class="apresentacao">
+        <h1>SEJA BEM-VINDO(A)</h1>
+
+        <p>
+            Explore tudo o que Ribeirão Pires tem a oferecer.
+        </p>
+
+        <p>
+            Descubra notícias, eventos e nossa história.
+        </p>
+
+        <a href="#" class="btn-conhecer">
+            CONHECER MAIS
+        </a>
+    </section>
+
+    <section class="cards">
+
+        <div class="card card-1">
+            <div class="card-conteudo">
+                <h2>Título do Card</h2>
+                <p>
+                    Coloque aqui o conteúdo do primeiro card.
+                    Você poderá substituir esse texto depois.
+                </p>
+                <a href="pgs/pagina1.php" class="btn-card">
+                    SAIBA MAIS
+                </a>
+            </div>
+
+            <div class="card-imagem">
+                <div class="imagem-quadrado">
+                    <img
+                        src="imgs/imagem-card-1.jpg"
+                        alt="Imagem do primeiro card"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-2">
+            <div class="card-imagem">
+                <div class="imagem-quadrado">
+                    <img
+                        src="imgs/imagem-card-2.jpg"
+                        alt="Imagem do segundo card"
+                    >
+                </div>
+            </div>
+
+            <div class="card-conteudo">
+                <h2>Título do Card</h2>
+                <p>
+                    Coloque aqui o conteúdo do segundo card.
+                    Você poderá substituir esse texto depois.
+                </p>
+                <a href="pgs/pagina2.php" class="btn-card">
+                    SAIBA MAIS
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #ffffff;
+            color: #222222;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .hero {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .apresentacao {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #ffffff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .apresentacao h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #222222;
+            transition: color 0.3s ease;
+        }
+
+        .apresentacao p {
+            font-size: 18px;
+            color: #666666;
+            margin: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .btn-conhecer {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background-color: #b51218 !important;
+            color: #ffffff !important;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-conhecer:hover {
+            background-color: #941016 !important;
+        }
+
+        .cards {
+            width: 100%;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 10%;
+            gap: 40px;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card-1 {
+            background-color: #f4f4f4;
+        }
+
+        .card-2 {
+            background-color: #ffffff;
+        }
+
+        .card-conteudo {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .card-conteudo h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #222222;
+            transition: color 0.3s ease;
+        }
+
+        .card-conteudo p {
+            font-size: 16px;
+            color: #555555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .btn-card {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #b51218 !important;
+            color: #ffffff !important;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-card:hover {
+            background-color: #941016 !important;
+        }
+
+        .card-imagem {
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .imagem-quadrado {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .imagem-quadrado img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column !important;
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .card-imagem {
+                width: 100%;
+            }
+
+            .imagem-quadrado {
+                max-width: 100%;
+            }
+        }
+
+        body.tema-noturno,
+        body.dark-mode {
+            background-color: #121212 !important;
+            color: #ffffff !important;
+        }
+
+        body.tema-noturno .apresentacao,
+        body.dark-mode .apresentacao {
+            background-color: #121212 !important;
+        }
+
+        body.tema-noturno .apresentacao h1,
+        body.dark-mode .apresentacao h1 {
+            color: #ffffff !important;
+        }
+
+        body.tema-noturno .apresentacao p,
+        body.dark-mode .apresentacao p {
+            color: #cccccc !important;
+        }
+
+        body.tema-noturno .card-1,
+        body.dark-mode .card-1 {
+            background-color: #181818 !important;
+        }
+
+        body.tema-noturno .card-2,
+        body.dark-mode .card-2 {
+            background-color: #121212 !important;
+        }
+
+        body.tema-noturno .card-conteudo h2,
+        body.dark-mode .card-conteudo h2 {
+            color: #ffffff !important;
+        }
+
+        body.tema-noturno .card-conteudo p,
+        body.dark-mode .card-conteudo p {
+            color: #dddddd !important;
+        }
+
+        body.tema-noturno .imagem-quadrado,
+        body.dark-mode .imagem-quadrado {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid #2a2a2a;
+        }
+
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,1338 @@
+<div class="pagina-publicacao">
+
+    <div id="conteudo">
+        Carregando publicação...
+    </div>
+
+</div>
+
+<style>
+
+.pagina-publicacao {
+    min-height: calc(100vh - 80px);
+    background: #f4f4f4;
+    padding: 40px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.publicacao {
+    max-width: 850px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.publicacao h1 {
+    margin-bottom: 10px;
+    color: #222;
+    transition: color 0.3s ease;
+}
+
+.meta {
+    color: #777;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.publicacao img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    margin: 20px 0;
+    border-radius: 6px;
+}
+
+.texto {
+    white-space: pre-wrap;
+    line-height: 1.7;
+    font-size: 17px;
+    margin-top: 25px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.interacoes {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+.interacoes button {
+    border: 0;
+    padding: 10px 18px;
+    background: #b51218;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.interacoes button:hover {
+    background: #941016;
+}
+
+.comentario-form {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.comentario-form input {
+    flex: 1;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#comentarios {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+#comentarios::-webkit-scrollbar {
+    width: 6px;
+}
+
+#comentarios::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#comentarios::-webkit-scrollbar-thumb {
+    background: #b51218;
+    border-radius: 4px;
+}
+
+#comentarios::-webkit-scrollbar-thumb:hover {
+    background: #941016;
+}
+
+.comentario {
+    border-top: 1px solid #ddd;
+    padding: 15px 0;
+    transition: border-color 0.3s ease;
+}
+
+.comentario strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #222;
+    transition: color 0.3s ease;
+}
+
+.comentario-data {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.comentario p {
+    color: #444;
+    transition: color 0.3s ease;
+}
+
+.comentario-acoes {
+    margin-top: 10px;
+}
+
+.comentario-acoes button {
+    background: transparent;
+    color: #b51218;
+    padding: 0;
+    margin-right: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.comentario-acoes button:hover {
+    background: transparent;
+    text-decoration: underline;
+}
+
+.editar-area {
+    margin-top: 10px;
+}
+
+.editar-area textarea {
+    width: 100%;
+    min-height: 80px;
+    resize: vertical;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #fff;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.editar-botoes {
+    margin-top: 8px;
+}
+
+.editar-botoes button {
+    margin-right: 8px;
+}
+
+.login-aviso {
+    background: #f9f9f9;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.login-aviso strong {
+    color: #222;
+    transition: color 0.3s ease;
+}
+
+.login-aviso p {
+    color: #666;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+}
+
+.login-aviso a {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #b51218;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.login-aviso a:hover {
+    background: #941016;
+}
+
+.badge-empresa {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 3px 7px;
+    background: #b51218;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+body.tema-noturno .pagina-publicacao,
+body.dark-mode .pagina-publicacao {
+    background: #121212 !important;
+    color: #ffffff !important;
+}
+
+body.tema-noturno .publicacao,
+body.dark-mode .publicacao {
+    background: #1e1e1e !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid #2a2a2a;
+}
+
+body.tema-noturno .publicacao h1,
+body.dark-mode .publicacao h1 {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .meta,
+body.dark-mode .meta,
+body.tema-noturno .comentario-data,
+body.dark-mode .comentario-data {
+    color: #aaaaaa !important;
+}
+
+body.tema-noturno .texto,
+body.dark-mode .texto {
+    color: #dddddd !important;
+}
+
+body.tema-noturno .interacoes,
+body.dark-mode .interacoes,
+body.tema-noturno .comentario,
+body.dark-mode .comentario {
+    border-color: #333333 !important;
+}
+
+body.tema-noturno .comentario strong,
+body.dark-mode .comentario strong {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .comentario p,
+body.dark-mode .comentario p {
+    color: #cccccc !important;
+}
+
+body.tema-noturno .comentario-form input,
+body.dark-mode .comentario-form input,
+body.tema-noturno .editar-area textarea,
+body.dark-mode .editar-area textarea {
+    background: #2a2a2a !important;
+    color: #ffffff !important;
+    border-color: #444444 !important;
+}
+
+body.tema-noturno #comentarios::-webkit-scrollbar-track,
+body.dark-mode #comentarios::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+body.tema-noturno #comentarios::-webkit-scrollbar-thumb,
+body.dark-mode #comentarios::-webkit-scrollbar-thumb {
+    background: #ff4d4d;
+}
+
+body.tema-noturno .comentario-acoes button,
+body.dark-mode .comentario-acoes button {
+    color: #ff4d4d !important;
+}
+
+body.tema-noturno .login-aviso,
+body.dark-mode .login-aviso {
+    background: #2a2a2a !important;
+    border-color: #3a3a3a !important;
+}
+
+body.tema-noturno .login-aviso strong,
+body.dark-mode .login-aviso strong {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .login-aviso p,
+body.dark-mode .login-aviso p {
+    color: #cccccc !important;
+}
+
+body.tema-noturno .badge-empresa,
+body.dark-mode .badge-empresa {
+    background: #ff4d4d !important;
+    color: #ffffff !important;
+}
+
+</style>
+
+<script>
+
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const id =
+    parametros.get("id");
+
+let contaAtual = null;
+
+
+async function verificarSessao() {
+
+    try {
+
+        const resposta =
+            await fetch(
+                "http://localhost:3000/api/auth/sessao",
+                {
+                    credentials: "include"
+                }
+            );
+
+        const sessao =
+            await resposta.json();
+
+        if (!sessao.ativa) {
+
+            contaAtual = null;
+
+            return false;
+
+        }
+
+        if (sessao.tipo === "empresa") {
+
+            const respostaEmpresa =
+                await fetch(
+                    "http://localhost:3000/api/auth/sessao",
+                    {
+                        credentials: "include"
+                    }
+                );
+
+            if (respostaEmpresa.ok) {
+
+                const empresaSalva =
+                    localStorage.getItem("empresa");
+
+                if (empresaSalva) {
+
+                    const empresa =
+                        JSON.parse(empresaSalva);
+
+                    contaAtual = {
+                        tipo: "empresa",
+                        id: empresa.id,
+                        nome: empresa.nome
+                    };
+
+                    return true;
+
+                }
+
+            }
+
+            contaAtual = {
+                tipo: "empresa",
+                id: null,
+                nome: ""
+            };
+
+            return true;
+
+        }
+
+        if (sessao.tipo === "usuario") {
+
+            const respostaUsuario =
+                await fetch(
+                    "http://localhost:3000/api/auth/usuario/me",
+                    {
+                        credentials: "include"
+                    }
+                );
+
+            if (!respostaUsuario.ok) {
+
+                contaAtual = null;
+
+                return false;
+
+            }
+
+            const dados =
+                await respostaUsuario.json();
+
+            contaAtual = {
+                tipo: "usuario",
+                id: dados.usuario.id,
+                nome: dados.usuario.nome
+            };
+
+            return true;
+
+        }
+
+        contaAtual = null;
+
+        return false;
+
+    } catch (erro) {
+
+        console.log(
+            "Erro ao verificar sessão:",
+            erro
+        );
+
+        contaAtual = null;
+
+        return false;
+
+    }
+
+}
+
+
+async function carregar() {
+
+    if (!id) {
+
+        document.getElementById(
+            "conteudo"
+        ).textContent =
+            "Publicação inválida.";
+
+        return;
+
+    }
+
+    try {
+
+        const resposta =
+            await fetch(
+                "http://localhost:3000/api/posts/" +
+                id
+            );
+
+        const dados =
+            await resposta.json();
+
+        if (!resposta.ok) {
+
+            document.getElementById(
+                "conteudo"
+            ).textContent =
+                dados.erro;
+
+            return;
+
+        }
+
+        const post =
+            dados.post;
+
+
+        await verificarSessao();
+
+
+        const imagem =
+            post.imagem
+                ? `
+                    <img
+                        src="http://localhost:3000/uploads/${post.imagem}"
+                    >
+                `
+                : "";
+
+
+        const dataEvento =
+            post.data_evento
+                ? `
+                    <div class="meta">
+
+                        Data do evento:
+                        ${formatarData(post.data_evento)}
+
+                    </div>
+                `
+                : "";
+
+
+        const dataPublicacao =
+            `
+                <div class="meta">
+
+                    Publicado em
+                    ${formatarDataHora(post.criado_em)}
+
+                </div>
+            `;
+
+
+        let comentarios =
+            "<p>Nenhum comentário ainda.</p>";
+
+
+        if (
+            dados.comentarios &&
+            dados.comentarios.length > 0
+        ) {
+
+            comentarios =
+                dados.comentarios
+                    .map(
+                        function (comentario) {
+
+                            let souDono = false;
+
+                            if (contaAtual) {
+
+                                if (
+                                    contaAtual.tipo === "usuario" &&
+                                    comentario.usuario_id &&
+                                    Number(contaAtual.id) ===
+                                    Number(comentario.usuario_id)
+                                ) {
+
+                                    souDono = true;
+
+                                }
+
+                                if (
+                                    contaAtual.tipo === "empresa" &&
+                                    comentario.empresa_id &&
+                                    Number(contaAtual.id) ===
+                                    Number(comentario.empresa_id)
+                                ) {
+
+                                    souDono = true;
+
+                                }
+
+                            }
+
+
+                            const editado =
+                                foiEditado(
+                                    comentario.criado_em,
+                                    comentario.atualizado_em
+                                );
+
+
+                            const acoes =
+                                souDono
+                                    ? `
+
+                                        <div class="comentario-acoes">
+
+                                            <button
+                                                onclick="editarComentario(${comentario.id})"
+                                            >
+                                                Editar
+                                            </button>
+
+                                            <button
+                                                onclick="excluirComentario(${comentario.id})"
+                                            >
+                                                Excluir
+                                            </button>
+
+                                        </div>
+
+                                    `
+                                    : "";
+
+
+                            let nome =
+                                comentario.usuario_nome ||
+                                comentario.empresa_nome ||
+                                "Conta";
+
+
+                            let identificacaoEmpresa = "";
+
+
+                            if (comentario.empresa_id) {
+
+                                identificacaoEmpresa =
+                                    `
+                                        <span class="badge-empresa">
+                                            EMPRESA
+                                        </span>
+                                    `;
+
+                            }
+
+
+                            return `
+
+                                <div
+                                    class="comentario"
+                                    id="comentario-${comentario.id}"
+                                >
+
+                                    <strong>
+                                        ${escaparHTML(nome)}
+                                        ${identificacaoEmpresa}
+                                    </strong>
+
+                                    <div class="comentario-data">
+
+                                        ${formatarDataHora(
+                                            comentario.criado_em
+                                        )}
+
+                                        ${
+                                            editado
+                                                ? " · editado"
+                                                : ""
+                                        }
+
+                                    </div>
+
+                                    <p>
+                                        ${escaparHTML(
+                                            comentario.comentario
+                                        )}
+                                    </p>
+
+                                    ${acoes}
+
+                                </div>
+
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+        }
+
+
+        let areaLogin = "";
+
+
+        if (!contaAtual) {
+
+            areaLogin = `
+
+                <div class="login-aviso">
+
+                    <strong>
+                        Quer participar?
+                    </strong>
+
+                    <p>
+                        Crie uma conta ou entre para curtir e comentar.
+                    </p>
+
+                    <a
+                        href="javascript:abrirLogin()"
+                    >
+                        Entrar
+                    </a>
+
+                    <a
+                        href="javascript:abrirCadastro()"
+                    >
+                        Criar conta
+                    </a>
+
+                </div>
+
+            `;
+
+        }
+
+
+        document.getElementById(
+            "conteudo"
+        ).innerHTML = `
+
+            <article class="publicacao">
+
+                <h1>
+                    ${escaparHTML(post.titulo)}
+                </h1>
+
+                <div class="meta">
+
+                    ${
+                        post.tipo === "evento"
+                            ? "Evento"
+                            : "Notícia"
+                    }
+
+                    ·
+
+                    ${escaparHTML(post.empresa_nome)}
+
+                </div>
+
+                ${dataPublicacao}
+
+                ${imagem}
+
+                ${dataEvento}
+
+                <div class="texto">
+
+                    ${escaparHTML(
+                        post.descricao
+                    )}
+
+                </div>
+
+                <div class="interacoes">
+
+                    <button
+                        onclick="curtir()"
+                    >
+
+                        Curtir
+                        (${post.total_likes})
+
+                    </button>
+
+                    ${areaLogin}
+
+                    <h2>
+                        Comentários
+                    </h2>
+
+                    <form
+                        class="comentario-form"
+                        onsubmit="comentar(event)"
+                    >
+
+                        <input
+                            id="comentario"
+                            placeholder="Escreva um comentário..."
+                            maxlength="500"
+                            required
+                        >
+
+                        <button type="submit">
+
+                            Comentar
+
+                        </button>
+
+                    </form>
+
+                    <div id="comentarios">
+
+                        ${comentarios}
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        `;
+
+
+        if (!contaAtual) {
+
+            const formComentario =
+                document.querySelector(".comentario-form");
+
+            if (formComentario) {
+                formComentario.style.display = "none";
+            }
+
+        }
+
+    } catch (erro) {
+
+        console.log(erro);
+
+        document.getElementById(
+            "conteudo"
+        ).textContent =
+            "Erro ao conectar com o servidor.";
+
+    }
+
+}
+
+
+function formatarData(data) {
+
+    if (!data) {
+        return "";
+    }
+
+    const partes =
+        String(data)
+            .substring(0, 10)
+            .split("-");
+
+    return (
+        partes[2] +
+        "/" +
+        partes[1] +
+        "/" +
+        partes[0]
+    );
+
+}
+
+
+function formatarDataHora(data) {
+
+    if (!data) {
+        return "";
+    }
+
+    const valor =
+        String(data)
+            .replace("T", " ")
+            .substring(0, 19);
+
+    const partes =
+        valor.split(" ");
+
+    if (partes.length < 2) {
+        return formatarData(data);
+    }
+
+    const dataPartes =
+        partes[0].split("-");
+
+    const hora =
+        partes[1].substring(0, 5);
+
+    return (
+        dataPartes[2] +
+        "/" +
+        dataPartes[1] +
+        "/" +
+        dataPartes[0] +
+        " às " +
+        hora
+    );
+
+}
+
+
+function foiEditado(
+    criado,
+    atualizado
+) {
+
+    if (!criado || !atualizado) {
+        return false;
+    }
+
+    const primeira =
+        new Date(criado).getTime();
+
+    const segunda =
+        new Date(atualizado).getTime();
+
+    return (
+        Math.abs(segunda - primeira) > 1000
+    );
+
+}
+
+
+function escaparHTML(texto) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        texto || "";
+
+    return div.innerHTML;
+
+}
+
+
+function abrirLogin() {
+
+    localStorage.setItem(
+        "voltarPublicacao",
+        window.location.href
+    );
+
+    window.location.href =
+        "index.php?pagina=login-usuario";
+
+}
+
+
+function abrirCadastro() {
+
+    localStorage.setItem(
+        "voltarPublicacao",
+        window.location.href
+    );
+
+    window.location.href =
+        "index.php?pagina=cadastro-usuario";
+
+}
+
+
+async function curtir() {
+
+    try {
+
+        const logado =
+            await verificarSessao();
+
+        if (!logado) {
+
+            abrirLogin();
+
+            return;
+
+        }
+
+
+        const resposta =
+            await fetch(
+                "http://localhost:3000/api/interacoes/like",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    credentials: "include",
+
+                    body: JSON.stringify({
+
+                        post_id: id
+
+                    })
+
+                }
+            );
+
+
+        const dados =
+            await resposta.json();
+
+
+        if (!resposta.ok) {
+
+            alert(
+                dados.erro ||
+                "Erro ao curtir."
+            );
+
+            return;
+
+        }
+
+
+        carregar();
+
+    } catch (erro) {
+
+        console.log(erro);
+
+        alert(
+            "Erro ao conectar com o servidor."
+        );
+
+    }
+
+}
+
+
+async function comentar(event) {
+
+    event.preventDefault();
+
+    try {
+
+        const logado =
+            await verificarSessao();
+
+        if (!logado) {
+
+            abrirLogin();
+
+            return;
+
+        }
+
+
+        const campo =
+            document.getElementById(
+                "comentario"
+            );
+
+
+        const comentario =
+            campo.value.trim();
+
+
+        if (!comentario) {
+            return;
+        }
+
+
+        if (comentario.length > 500) {
+
+            alert(
+                "O comentário pode ter no máximo 500 caracteres."
+            );
+
+            return;
+
+        }
+
+
+        const resposta =
+            await fetch(
+                "http://localhost:3000/api/interacoes/comentario",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    credentials: "include",
+
+                    body: JSON.stringify({
+
+                        post_id: id,
+
+                        comentario:
+                            comentario
+
+                    })
+
+                }
+            );
+
+
+        const dados =
+            await resposta.json();
+
+
+        if (!resposta.ok) {
+
+            alert(
+                dados.erro ||
+                "Erro ao comentar."
+            );
+
+            return;
+
+        }
+
+
+        carregar();
+
+    } catch (erro) {
+
+        console.log(erro);
+
+        alert(
+            "Erro ao conectar com o servidor."
+        );
+
+    }
+
+}
+
+
+async function editarComentario(
+    comentarioId
+) {
+
+    const elemento =
+        document.getElementById(
+            "comentario-" +
+            comentarioId
+        );
+
+
+    if (!elemento) {
+        return;
+    }
+
+
+    const textoAtual =
+        elemento.querySelector(
+            "p"
+        ).textContent;
+
+
+    elemento.querySelector(
+        "p"
+    ).innerHTML = `
+
+        <div class="editar-area">
+
+            <textarea
+                id="editar-${comentarioId}"
+                maxlength="500"
+            >${escaparHTML(
+                textoAtual
+            )}</textarea>
+
+
+            <div class="editar-botoes">
+
+                <button
+                    onclick="salvarEdicao(${comentarioId})"
+                >
+                    Salvar
+                </button>
+
+                <button
+                    onclick="carregar()"
+                >
+                    Cancelar
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+async function salvarEdicao(
+    comentarioId
+) {
+
+    const campo =
+        document.getElementById(
+            "editar-" +
+            comentarioId
+        );
+
+
+    if (!campo) {
+        return;
+    }
+
+
+    const comentario =
+        campo.value.trim();
+
+
+    if (!comentario) {
+
+        alert(
+            "O comentário não pode ficar vazio."
+        );
+
+        return;
+
+    }
+
+
+    if (comentario.length > 500) {
+
+        alert(
+            "O comentário pode ter no máximo 500 caracteres."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const resposta =
+            await fetch(
+                "http://localhost:3000/api/interacoes/comentario/" +
+                comentarioId,
+                {
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    credentials: "include",
+
+                    body: JSON.stringify({
+
+                        comentario:
+                            comentario
+
+                    })
+
+                }
+            );
+
+
+        const dados =
+            await resposta.json();
+
+
+        if (!resposta.ok) {
+
+            alert(
+                dados.erro ||
+                "Erro ao editar comentário."
+            );
+
+            return;
+
+        }
+
+
+        carregar();
+
+    } catch (erro) {
+
+        console.log(erro);
+
+        alert(
+            "Erro ao conectar com o servidor."
+        );
+
+    }
+
+}
+
+
+async function excluirComentario(
+    comentarioId
+) {
+
+    const confirmar =
+        confirm(
+            "Deseja realmente excluir este comentário?"
+        );
+
+
+    if (!confirmar) {
+        return;
+    }
+
+
+    try {
+
+        const resposta =
+            await fetch(
+                "http://localhost:3000/api/interacoes/comentario/" +
+                comentarioId,
+                {
+                    method: "DELETE",
+
+                    credentials: "include"
+
+                }
+            );
+
+
+        const dados =
+            await resposta.json();
+
+
+        if (!resposta.ok) {
+
+            alert(
+                dados.erro ||
+                "Erro ao excluir comentário."
+            );
+
+            return;
+
+        }
+
+
+        carregar();
+
+    } catch (erro) {
+
+        console.log(erro);
+
+        alert(
+            "Erro ao conectar com o servidor."
+        );
+
+    }
+
+}
+
+
+carregar();
+
+</script>

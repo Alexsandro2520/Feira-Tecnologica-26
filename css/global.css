@@ -1,0 +1,68 @@
+/* ============================================================
+   VARIÁVEIS DE CORES (TEMA CLARO E ESCURO)
+   ============================================================ */
+:root {
+  --bg-principal: #f4f4f4;
+  --bg-card: #ffffff;
+  --bg-card-secundario: #e8e8e8;
+  --texto-principal: #1a1a1a;
+  --texto-secundario: #555555;
+  --borda: #dddddd;
+  --botao: #007bff;
+  --botao-hover: #0056b3;
+}
+
+/* Quando qualquer página tiver a classe .dark-mode ou .tema-noturno no body */
+body.dark-mode,
+body.tema-noturno {
+  --bg-principal: #121212;
+  --bg-card: #1e1e1e;
+  --bg-card-secundario: #2a2a2a;
+  --texto-principal: #ffffff;
+  --texto-secundario: #b0b0b0;
+  --borda: #333333;
+  --botao: #ffb703;
+  --botao-hover: #fb8500;
+}
+
+/* ============================================================
+   APLICAÇÃO GLOBAL NAS PÁGINAS E ELEMENTOS
+   ============================================================ */
+body {
+  background-color: var(--bg-principal) !important;
+  color: var(--texto-principal) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Força TODOS os cards (Publicação, Eventos, Notícias, Turismo) a trocarem de cor */
+.card,
+.post-card,
+.publicacao-card,
+.turismo-card,
+.apresentacao,
+.container-publicacao,
+.turismo-container {
+  background-color: var(--bg-card) !important;
+  color: var(--texto-principal) !important;
+  border-color: var(--borda) !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Garante que títulos e textos dentro dos cards fiquem legíveis */
+h1, h2, h3, h4, h5, h6,
+.card h1, .card h2, .card h3,
+.titulo-post, .turismo-card-conteudo h2 {
+  color: var(--texto-principal) !important;
+}
+
+p, span, label, div,
+.texto-autor, .texto-detalhes,
+.turismo-card-conteudo p {
+  color: var(--texto-secundario) !important;
+}
+
+/* Elementos secundários/quadrados internos */
+.imagem-quadrado,
+.card-1, .card-2 {
+  background-color: var(--bg-card-secundario) !important;
+}

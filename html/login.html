@@ -1,0 +1,378 @@
+<div class="pagina-login">
+
+    <div class="login-caixa">
+
+        <h1>Login da Empresa</h1>
+
+        <p>Entre para gerenciar suas publicações.</p>
+
+        <form id="formLogin">
+
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Digite seu email"
+                required
+            >
+
+            <label for="senha">
+                Senha
+            </label>
+
+            <input
+                type="password"
+                id="senha"
+                placeholder="Digite sua senha"
+                required
+            >
+
+            <button type="submit" id="botaoLogin">
+                Entrar
+            </button>
+
+        </form>
+
+        <p id="mensagem"></p>
+
+        <a href="index.php?pagina=cadastro">
+            Não possui uma conta? Cadastre-se
+        </a>
+
+    </div>
+
+</div>
+
+<style>
+
+.pagina-login {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    background-color: #f4f4f4;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-caixa {
+    width: 100%;
+    max-width: 450px;
+
+    padding: 40px;
+
+    background-color: #ffffff;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
+
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-caixa h1 {
+    margin-bottom: 10px;
+    color: #222222;
+    transition: color 0.3s ease;
+}
+
+.login-caixa p {
+    margin-bottom: 25px;
+
+    color: #666666;
+    transition: color 0.3s ease;
+}
+
+.login-caixa form {
+    display: flex;
+    flex-direction: column;
+
+    text-align: left;
+}
+
+.login-caixa label {
+    margin-bottom: 6px;
+
+    font-weight: bold;
+    color: #222222;
+    transition: color 0.3s ease;
+}
+
+.login-caixa input {
+    padding: 13px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #222222;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.login-caixa button {
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #b51218 !important;
+
+    color: #ffffff !important;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-caixa button:hover {
+    background-color: #941016 !important;
+}
+
+.login-caixa a {
+    color: #b51218;
+
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-caixa a:hover {
+    text-decoration: underline;
+}
+
+#mensagem {
+    margin-top: 15px;
+}
+
+body.tema-noturno .pagina-login,
+body.dark-mode .pagina-login {
+    background-color: #121212 !important;
+}
+
+body.tema-noturno .login-caixa,
+body.dark-mode .login-caixa {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid #2a2a2a;
+}
+
+body.tema-noturno .login-caixa h1,
+body.dark-mode .login-caixa h1 {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .login-caixa p,
+body.dark-mode .login-caixa p {
+    color: #cccccc !important;
+}
+
+body.tema-noturno .login-caixa label,
+body.dark-mode .login-caixa label {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .login-caixa input,
+body.dark-mode .login-caixa input {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border-color: #444444 !important;
+}
+
+body.tema-noturno .login-caixa a,
+body.dark-mode .login-caixa a {
+    color: #ff4d4d !important;
+}
+
+</style>
+
+<script>
+
+const formLogin =
+    document.getElementById("formLogin");
+
+const botaoLogin =
+    document.getElementById("botaoLogin");
+
+const mensagem =
+    document.getElementById("mensagem");
+
+
+async function verificarSessao() {
+
+    try {
+
+        const resposta =
+            await fetch(
+                "http://localhost:3000/api/auth/sessao",
+                {
+                    credentials: "include"
+                }
+            );
+
+
+        const sessao =
+            await resposta.json();
+
+
+        if (sessao.ativa) {
+
+            formLogin.style.display =
+                "none";
+
+            mensagem.textContent =
+                "Já existe uma conta ativa. Saia da conta atual para entrar em outra.";
+
+        }
+
+    } catch (erro) {
+
+        console.log(
+            "Erro ao verificar sessão:",
+            erro
+        );
+
+    }
+
+}
+
+
+verificarSessao();
+
+
+formLogin.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const email =
+            document.getElementById("email")
+                .value
+                .trim();
+
+        const senha =
+            document.getElementById("senha")
+                .value;
+
+
+        mensagem.textContent = "";
+
+        botaoLogin.disabled = true;
+
+        botaoLogin.textContent =
+            "Entrando...";
+
+
+        try {
+
+            const resposta =
+                await fetch(
+                    "http://localhost:3000/api/auth/login",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        credentials: "include",
+
+                        body: JSON.stringify({
+                            email: email,
+                            senha: senha
+                        })
+                    }
+                );
+
+
+            let dados;
+
+            try {
+
+                dados =
+                    await resposta.json();
+
+            } catch (erro) {
+
+                dados = {};
+
+            }
+
+
+            if (!resposta.ok) {
+
+                mensagem.textContent =
+                    dados.erro ||
+                    "Email ou senha incorretos.";
+
+                botaoLogin.disabled =
+                    false;
+
+                botaoLogin.textContent =
+                    "Entrar";
+
+                return;
+
+            }
+
+
+            localStorage.removeItem(
+                "token"
+            );
+
+            localStorage.removeItem(
+                "usuario"
+            );
+
+
+            localStorage.setItem(
+                "empresa",
+                JSON.stringify(
+                    dados.empresa
+                )
+            );
+
+
+            window.location.href =
+                "index.php?pagina=painel";
+
+
+        } catch (erro) {
+
+            console.log(
+                "Erro ao conectar com a API:",
+                erro
+            );
+
+            mensagem.textContent =
+                "Não foi possível conectar com o servidor.";
+
+            botaoLogin.disabled =
+                false;
+
+            botaoLogin.textContent =
+                "Entrar";
+
+        }
+
+    }
+);
+
+</script>

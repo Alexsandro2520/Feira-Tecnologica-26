@@ -1,0 +1,206 @@
+<div class="conta-container">
+
+    <div class="conta">
+
+        <h1>Minha conta</h1>
+
+        <div class="conta-campo">
+            <span class="conta-label">Nome</span>
+            <span id="nomeUsuario">Carregando...</span>
+        </div>
+
+        <div class="conta-campo">
+            <span class="conta-label">E-mail</span>
+            <span id="emailUsuario">Carregando...</span>
+        </div>
+
+        <button
+            type="button"
+            onclick="sairDaConta()"
+        >
+            Sair da conta
+        </button>
+
+    </div>
+
+</div>
+
+
+<style>
+
+.conta-container {
+    min-height: calc(100vh - 80px);
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.conta {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 40px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.conta h1 {
+    margin: 0 0 35px 0;
+    font-size: 30px;
+    color: #222222;
+    transition: color 0.3s ease;
+}
+
+.conta-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 0;
+    border-bottom: 1px solid #dddddd;
+    transition: border-color 0.3s ease;
+}
+
+.conta-label {
+    font-size: 14px;
+    color: #777777;
+    transition: color 0.3s ease;
+}
+
+.conta-campo span:last-child {
+    font-size: 18px;
+    color: #222222;
+    transition: color 0.3s ease;
+}
+
+.conta button {
+    margin-top: 30px;
+    padding: 13px 25px;
+    border: none !important;
+    border-radius: 6px;
+    background-color: #b51218 !important;
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.conta button:hover {
+    background-color: #941016 !important;
+}
+
+body.tema-noturno .conta-container,
+body.dark-mode .conta-container {
+    background-color: #121212 !important;
+}
+
+body.tema-noturno .conta,
+body.dark-mode .conta {
+    background-color: #1e1e1e !important;
+    border: 1px solid #2a2a2a;
+}
+
+body.tema-noturno .conta h1,
+body.dark-mode .conta h1 {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .conta-campo,
+body.dark-mode .conta-campo {
+    border-bottom-color: #333333 !important;
+}
+
+body.tema-noturno .conta-label,
+body.dark-mode .conta-label {
+    color: #aaaaaa !important;
+}
+
+body.tema-noturno .conta-campo span:last-child,
+body.dark-mode .conta-campo span:last-child {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .conta button,
+body.dark-mode .conta button {
+    background-color: #b51218 !important;
+    color: #ffffff !important;
+}
+
+</style>
+
+
+<script>
+
+async function carregarConta() {
+
+    try {
+
+        const resposta =
+            await fetch(
+                "http://localhost:3000/api/auth/usuario/me",
+                {
+                    credentials: "include"
+                }
+            );
+
+        if (!resposta.ok) {
+
+            window.location.href =
+                "index.php?pagina=login-usuario";
+
+            return;
+        }
+
+        const dados =
+            await resposta.json();
+
+        document.getElementById(
+            "nomeUsuario"
+        ).textContent =
+            dados.usuario.nome;
+
+        document.getElementById(
+            "emailUsuario"
+        ).textContent =
+            dados.usuario.email;
+
+    } catch (erro) {
+
+        console.log(erro);
+
+        window.location.href =
+            "index.php?pagina=login-usuario";
+    }
+}
+
+
+async function sairDaConta() {
+
+    try {
+
+        await fetch(
+            "http://localhost:3000/api/auth/usuario/logout",
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+
+    } catch (erro) {
+
+        console.log(erro);
+    }
+
+    localStorage.removeItem("usuario");
+
+    window.location.href =
+        "index.php";
+}
+
+
+carregarConta();
+
+</script>

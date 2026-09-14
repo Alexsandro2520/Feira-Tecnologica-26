@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo de Ribeirão Pires</title>
+</head>
+<body>
+
+    <section class="turismo">
+
+        <h1>Turismo em Ribeirão Pires</h1>
+
+        <div class="turismo-container">
+
+            <div class="turismo-cards">
+
+                <div class="turismo-card">
+                    <div class="turismo-card-imagem">
+                        <img src="img/torre-miroku.jpg" alt="Torre de Miroku">
+                    </div>
+
+                    <div class="turismo-card-conteudo">
+                        <h2>Torre de Miroku</h2>
+                        <p>
+                            Um dos principais cartões-postais de Ribeirão Pires.
+                        </p>
+                        <button>CONHECER</button>
+                    </div>
+                </div>
+
+                <div class="turismo-card">
+                    <div class="turismo-card-imagem">
+                        <img src="img/parque-oriental.jpg" alt="Parque Oriental">
+                    </div>
+
+                    <div class="turismo-card-conteudo">
+                        <h2>Parque Oriental</h2>
+                        <p>
+                            Um espaço de lazer e contato com a natureza.
+                        </p>
+                        <button>CONHECER</button>
+                    </div>
+                </div>
+
+                <div class="turismo-card">
+                    <div class="turismo-card-imagem">
+                        <img src="img/mirante-sao-jose.jpg" alt="Mirante São José">
+                    </div>
+
+                    <div class="turismo-card-conteudo">
+                        <h2>Mirante São José</h2>
+                        <p>
+                            Um dos principais mirantes da cidade.
+                        </p>
+                        <button>CONHECER</button>
+                    </div>
+                </div>
+
+                <div class="turismo-card">
+                    <div class="turismo-card-imagem">
+                        <img src="img/vila-do-doce.jpg" alt="Vila do Doce">
+                    </div>
+
+                    <div class="turismo-card-conteudo">
+                        <h2>Vila do Doce</h2>
+                        <p>
+                            Um espaço gastronômico e artesanal no centro da cidade.
+                        </p>
+                        <button>CONHECER</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <style>
+
+    /* Reset básico */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .turismo {
+        padding: 50px 20px;
+        min-height: 100vh;
+    }
+
+    .turismo h1 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 40px;
+        color: #222;
+        transition: color 0.3s ease;
+    }
+
+    .turismo-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .turismo-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+    }
+
+    .turismo-card {
+        background: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .turismo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .turismo-card-imagem {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .turismo-card-imagem img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .turismo-card:hover .turismo-card-imagem img {
+        transform: scale(1.05);
+    }
+
+    .turismo-card-conteudo {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .turismo-card-conteudo h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #222;
+        transition: color 0.3s ease;
+    }
+
+    .turismo-card-conteudo p {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        flex: 1;
+        transition: color 0.3s ease;
+    }
+
+    .turismo-card-conteudo button {
+        border: 0;
+        padding: 12px 20px;
+        background: #b51218;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+    }
+
+    .turismo-card-conteudo button:hover {
+        background: #941016;
+    }
+
+    /* Suporte para Tema Noturno / Dark Mode */
+    body.tema-noturno,
+    body.dark-mode {
+        background-color: #121212 !important;
+        color: #ffffff !important;
+    }
+
+    body.tema-noturno .turismo h1,
+    body.dark-mode .turismo h1 {
+        color: #ffffff !important;
+    }
+
+    body.tema-noturno .turismo-card,
+    body.dark-mode .turismo-card {
+        background: #1e1e1e !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        border: 1px solid #2a2a2a;
+    }
+
+    body.tema-noturno .turismo-card-conteudo h2,
+    body.dark-mode .turismo-card-conteudo h2 {
+        color: #ffffff !important;
+    }
+
+    body.tema-noturno .turismo-card-conteudo p,
+    body.dark-mode .turismo-card-conteudo p {
+        color: #cccccc !important;
+    }
+
+    body.tema-noturno .turismo-card-conteudo button,
+    body.dark-mode .turismo-card-conteudo button {
+        background: #b51218 !important;
+        color: #ffffff !important;
+    }
+
+    body.tema-noturno .turismo-card-conteudo button:hover,
+    body.dark-mode .turismo-card-conteudo button:hover {
+        background: #ff4d4d !important;
+    }
+
+    </style>
+
+</body>
+</html>

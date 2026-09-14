@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>História de Ribeirão Pires</title>
+
+</head>
+
+<body>
+
+    <main class="historia-container">
+
+        <div class="historia-imagem">
+
+            <img
+                src="imgs/torre_miracu.png"
+                alt="Imagem relacionada à história de Ribeirão Pires"
+            >
+
+        </div>
+
+        <section class="historia-textos">
+
+            <article class="historia-secao">
+
+                <h2>Origens</h2>
+
+                <div class="historia-card">
+                    <p id="origens" class="texto-txt" data-arquivo="textos/origens.txt"></p>
+                </div>
+
+            </article>
+
+            <article class="historia-secao">
+
+                <h2>De floresta para cidade</h2>
+
+                <div class="historia-card">
+
+                    <p id="floresta" class="texto-txt" data-arquivo="textos/floresta.txt"></p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <script>
+        const paragrafos = document.querySelectorAll(".texto-txt");
+
+        paragrafos.forEach(paragrafo => {
+
+            const caminho = paragrafo.dataset.arquivo;
+
+            fetch(caminho)
+                .then(resposta => resposta.text())
+                .then(texto => {
+
+                    paragrafo.textContent = texto;
+
+                });
+
+        });
+    
+    </script>
+
+    <style>
+
+        .historia-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 70px;
+            padding: 70px 8%;
+            background-color: #f4f4f4;
+            color: #222222;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .historia-imagem {
+            flex: 0 0 558px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .historia-imagem img {
+            width: 558px;
+            height: auto;
+            display: block;
+            padding: 12px;
+            background-color: #ffffff;
+            border-radius: 50px;
+            object-fit: contain;
+            box-sizing: border-box;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s ease;
+        }
+
+        .historia-textos {
+            flex: 1;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .historia-secao {
+            width: 100%;
+        }
+
+        .historia-secao h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: #222222;
+            transition: color 0.3s ease;
+        }
+
+        .historia-card {
+            width: 100%;
+            padding: 35px 40px;
+            background-color: #ffffff;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .historia-card p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #555555;
+            white-space: pre-line;
+            transition: color 0.3s ease;
+        }
+
+        @media (max-width: 1100px) {
+
+            .historia-container {
+                gap: 40px;
+                padding: 50px 5%;
+            }
+
+            .historia-imagem {
+                flex: 0 0 45%;
+            }
+
+            .historia-imagem img {
+                width: 100%;
+            }
+
+        }
+
+        @media (max-width: 800px) {
+
+            .historia-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 8%;
+            }
+
+            .historia-imagem {
+                width: 100%;
+                max-width: 558px;
+            }
+
+            .historia-textos {
+                width: 100%;
+                max-width: 700px;
+            }
+
+            .historia-secao h2 {
+                font-size: 30px;
+            }
+
+            .historia-card {
+                padding: 30px;
+            }
+
+        }
+
+        body.tema-noturno .historia-container,
+        body.dark-mode .historia-container {
+            background-color: #121212 !important;
+            color: #ffffff !important;
+        }
+
+        body.tema-noturno .historia-imagem img,
+        body.dark-mode .historia-imagem img {
+            background-color: #1e1e1e !important;
+            border: 1px solid #2a2a2a;
+        }
+
+        body.tema-noturno .historia-secao h2,
+        body.dark-mode .historia-secao h2 {
+            color: #ffffff !important;
+        }
+
+        body.tema-noturno .historia-card,
+        body.dark-mode .historia-card {
+            background-color: #1e1e1e !important;
+            border: 1px solid #2a2a2a;
+        }
+
+        body.tema-noturno .historia-card p,
+        body.dark-mode .historia-card p {
+            color: #dddddd !important;
+        }
+
+    </style>
+
+</body>
+
+</html>

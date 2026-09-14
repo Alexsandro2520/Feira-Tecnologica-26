@@ -1,0 +1,268 @@
+<div class="pagina-nova-noticia">
+
+    <div class="caixa-nova-noticia">
+
+        <h1>Nova notícia</h1>
+
+        <p>Publique uma nova notícia para a Feira Tecnológica.</p>
+
+        <form id="formNoticia">
+
+            <label for="titulo">Título</label>
+
+            <input
+                type="text"
+                id="titulo"
+                placeholder="Digite o título da notícia"
+                required
+            >
+
+            <label for="descricao">Descrição</label>
+
+            <textarea
+                id="descricao"
+                placeholder="Digite o conteúdo da notícia"
+                required
+            ></textarea>
+
+            <button type="submit">
+                Publicar notícia
+            </button>
+
+        </form>
+
+        <p id="mensagem"></p>
+
+        <a href="index.php?pagina=painel">
+            Voltar para o painel
+        </a>
+
+    </div>
+
+</div>
+
+<style>
+
+.pagina-nova-noticia {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.caixa-nova-noticia {
+    width: 100%;
+    max-width: 650px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.caixa-nova-noticia h1 {
+    margin-bottom: 10px;
+    color: #222222;
+    transition: color 0.3s ease;
+}
+
+.caixa-nova-noticia > p {
+    color: #666666;
+    margin-bottom: 30px;
+    transition: color 0.3s ease;
+}
+
+.caixa-nova-noticia form {
+    display: flex;
+    flex-direction: column;
+}
+
+.caixa-nova-noticia label {
+    margin-bottom: 7px;
+    font-weight: bold;
+    color: #222222;
+    transition: color 0.3s ease;
+}
+
+.caixa-nova-noticia input,
+.caixa-nova-noticia textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    background-color: #ffffff;
+    color: #222222;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.caixa-nova-noticia textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+.caixa-nova-noticia button {
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #b51218 !important;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.caixa-nova-noticia button:hover {
+    background-color: #941016 !important;
+}
+
+#mensagem {
+    margin-top: 20px;
+    color: #222222;
+    transition: color 0.3s ease;
+}
+
+.caixa-nova-noticia a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #b51218;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.caixa-nova-noticia a:hover {
+    text-decoration: underline;
+}
+
+/* Suporte para Tema Noturno / Dark Mode */
+body.tema-noturno .pagina-nova-noticia,
+body.dark-mode .pagina-nova-noticia {
+    background-color: #121212 !important;
+}
+
+body.tema-noturno .caixa-nova-noticia,
+body.dark-mode .caixa-nova-noticia {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid #2a2a2a;
+}
+
+body.tema-noturno .caixa-nova-noticia h1,
+body.dark-mode .caixa-nova-noticia h1 {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .caixa-nova-noticia > p,
+body.dark-mode .caixa-nova-noticia > p {
+    color: #cccccc !important;
+}
+
+body.tema-noturno .caixa-nova-noticia label,
+body.dark-mode .caixa-nova-noticia label {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .caixa-nova-noticia input,
+body.tema-noturno .caixa-nova-noticia textarea,
+body.dark-mode .caixa-nova-noticia input,
+body.dark-mode .caixa-nova-noticia textarea {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border-color: #444444 !important;
+}
+
+body.tema-noturno #mensagem,
+body.dark-mode #mensagem {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .caixa-nova-noticia a,
+body.dark-mode .caixa-nova-noticia a {
+    color: #ff4d4d !important;
+}
+
+</style>
+
+<script>
+
+const token = localStorage.getItem("token");
+
+if (!token) {
+
+    window.location.href =
+        "index.php?pagina=login";
+
+}
+
+const formNoticia =
+    document.getElementById("formNoticia");
+
+const mensagem =
+    document.getElementById("mensagem");
+
+formNoticia.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const titulo =
+        document.getElementById("titulo").value;
+
+    const descricao =
+        document.getElementById("descricao").value;
+
+    mensagem.textContent = "Publicando...";
+
+    try {
+
+        const resposta = await fetch(
+            "http://localhost:3000/api/posts",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                },
+
+                body: JSON.stringify({
+                    tipo: "noticia",
+                    titulo: titulo,
+                    descricao: descricao
+                })
+            }
+        );
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+
+            mensagem.textContent = dados.erro;
+
+            return;
+        }
+
+        mensagem.textContent =
+            "Notícia publicada com sucesso!";
+
+        formNoticia.reset();
+
+    } catch (erro) {
+
+        console.log(erro);
+
+        mensagem.textContent =
+            "Não foi possível conectar com o servidor.";
+
+    }
+
+});
+
+</script>

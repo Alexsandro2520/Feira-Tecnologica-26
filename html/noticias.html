@@ -1,0 +1,311 @@
+<div class="pagina-noticias">
+
+    <h1>Notícias</h1>
+
+    <div id="noticias">
+        Carregando notícias...
+    </div>
+
+</div>
+
+
+<style>
+
+.pagina-noticias {
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: auto;
+    transition: color 0.3s ease;
+}
+
+.pagina-noticias h1 {
+    margin-bottom: 30px;
+    color: #222222;
+    transition: color 0.3s ease;
+}
+
+.lista-noticias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* Força todos os cards a terem a mesma altura */
+.noticia {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Container de imagem com altura fixa e suporte a placeholder */
+.noticia-imagem {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.noticia-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Texto de placeholder caso não haja imagem */
+.sem-imagem {
+    color: #888888;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.noticia h2 {
+    margin-bottom: 10px;
+    color: #222222;
+    transition: color 0.3s ease;
+}
+
+.empresa {
+    color: #777777;
+    font-size: 14px;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.descricao {
+    color: #555555;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+    flex: 1; /* Preenche o espaço restante mantendo a altura dos cards uniforme */
+}
+
+.info {
+    color: #777777;
+    font-size: 14px;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+/* Alinha o botão sempre no rodapé do card */
+.noticia a {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: auto;
+    background-color: #b51218 !important;
+    color: #ffffff !important;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.noticia a:hover {
+    background-color: #941016 !important;
+}
+
+.vazio {
+    padding: 30px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    text-align: center;
+    color: #555555;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 700px) {
+
+    .lista-noticias {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* Tema Noturno / Dark Mode */
+body.tema-noturno .pagina-noticias h1,
+body.dark-mode .pagina-noticias h1 {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .noticia,
+body.dark-mode .noticia {
+    background-color: #1e1e1e !important;
+    border-color: #2a2a2a !important;
+}
+
+body.tema-noturno .noticia-imagem,
+body.dark-mode .noticia-imagem {
+    background-color: #2a2a2a !important;
+}
+
+body.tema-noturno .sem-imagem,
+body.dark-mode .sem-imagem {
+    color: #aaaaaa !important;
+}
+
+body.tema-noturno .noticia h2,
+body.dark-mode .noticia h2 {
+    color: #ffffff !important;
+}
+
+body.tema-noturno .empresa,
+body.dark-mode .empresa {
+    color: #aaaaaa !important;
+}
+
+body.tema-noturno .descricao,
+body.dark-mode .descricao {
+    color: #dddddd !important;
+}
+
+body.tema-noturno .info,
+body.dark-mode .info {
+    color: #aaaaaa !important;
+}
+
+body.tema-noturno .vazio,
+body.dark-mode .vazio {
+    background-color: #1e1e1e !important;
+    color: #dddddd !important;
+    border: 1px solid #2a2a2a;
+}
+
+</style>
+
+
+<script>
+
+async function carregarNoticias() {
+
+    const area =
+        document.getElementById("noticias");
+
+    try {
+
+        const resposta =
+            await fetch(
+                "http://localhost:3000/api/posts?tipo=noticia"
+            );
+
+        const noticias =
+            await resposta.json();
+
+
+        if (!resposta.ok) {
+
+            area.innerHTML =
+                `<div class="vazio">
+                    Erro ao carregar notícias.
+                </div>`;
+
+            return;
+        }
+
+
+        if (noticias.length === 0) {
+
+            area.innerHTML =
+                `<div class="vazio">
+                    Nenhuma notícia publicada ainda.
+                </div>`;
+
+            return;
+        }
+
+
+        area.innerHTML =
+            `<div class="lista-noticias"></div>`;
+
+
+        const lista =
+            area.querySelector(
+                ".lista-noticias"
+            );
+
+
+        noticias.forEach(
+            function (noticia) {
+
+                const imagemHTML =
+                    noticia.imagem
+                        ? `<img src="http://localhost:3000/uploads/${noticia.imagem}" alt="${escaparHTML(noticia.titulo)}">`
+                        : `<span class="sem-imagem">Sem Imagem</span>`;
+
+
+                lista.innerHTML += `
+
+                    <article class="noticia">
+
+                        <div class="noticia-imagem">
+                            ${imagemHTML}
+                        </div>
+
+                        <h2>
+                            ${escaparHTML(noticia.titulo)}
+                        </h2>
+
+                        <div class="empresa">
+                            Publicado por:
+                            ${escaparHTML(noticia.empresa_nome)}
+                        </div>
+
+                        <div class="descricao">
+                            ${escaparHTML(noticia.descricao)}
+                        </div>
+
+                        <div class="info">
+
+                            Curtidas:
+                            ${noticia.total_likes}
+
+                            |
+
+                            Comentários:
+                            ${noticia.total_comentarios}
+
+                        </div>
+
+                        <a
+                            href="index.php?pagina=publicacao&id=${noticia.id}"
+                        >
+                            Ver notícia
+                        </a>
+
+                    </article>
+
+                `;
+
+            }
+        );
+
+    } catch (erro) {
+
+        console.log(erro);
+
+        area.innerHTML =
+            `<div class="vazio">
+                Erro ao conectar com o servidor.
+            </div>`;
+
+    }
+
+}
+
+function escaparHTML(texto) {
+    const div = document.createElement("div");
+    div.textContent = texto || "";
+    return div.innerHTML;
+}
+
+carregarNoticias();
+
+</script>
