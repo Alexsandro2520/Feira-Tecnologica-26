@@ -63,7 +63,7 @@ Depois abra:
 
 No terminal do VS Code, execute:
 
-```text
+
 cd backend# Como iniciar o projeto
 
 ## 1. Colocar o projeto no XAMPP
@@ -129,5 +129,5 @@ Depois abra:
 
 No terminal do VS Code, execute:
 
-```text
+
 cd backend
