@@ -33,7 +33,7 @@ http://localhost/phpmyadmin
 
 No phpMyAdmin, clique em "SQL".
 
-Cole o código SQL do banco de dados e execute.
+Importe o banco de dados que esta junto ao projeto
 
 O banco utilizado pelo projeto é:
 
@@ -47,13 +47,13 @@ As tabelas utilizadas são:
 - likes
 - comentarios
 
-Caso você tenha o arquivo .sql do banco, também pode utilizar a opção "Importar" do phpMyAdmin para importar o banco.
+
 
 ---
 
 ## 4. Entrar na pasta do backend
 
-Abra o CMD ou terminal.
+Abra o CMD ou terminal do VScode.
 
 Entre na pasta do projeto:
 
